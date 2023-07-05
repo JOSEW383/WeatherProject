@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/image', express.static('image'))
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
@@ -32,6 +33,8 @@ function getWeather(res, city){
 
     response.on('data', (data) => {
       let weatherData = JSON.parse(data);
+      res.write('<body style="background-image: url(image/background.jpg);">');
+      res.write('<div class="mx-auto" style="width: auto; text-align: center;">');
       if(weatherData.cod=='200'){
         let weatherTemperature = weatherData.main.temp;
         let weatherDescription = weatherData.weather[0].description;
@@ -40,12 +43,13 @@ function getWeather(res, city){
         // console.log('weatherData:', weatherData);
         console.log('weatherTemperature:', weatherTemperature);
         console.log('weatherDescription:', weatherDescription);
-  
         res.write('<h1>The temperature in '+city+' is '+weatherTemperature+' degrees celsius</h1>');
         res.write('<p1>The weather is currently '+weatherDescription+'</p1>' + '<img src="'+iconURL+'" width="30" height="30">');
       }else{
         res.write('<h1>Please enter a valid city</h1>');
       }
+      res.write('</div>');
+      res.write('</body>');
 
       res.send();
     });

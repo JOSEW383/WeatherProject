@@ -1,0 +1,11 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: weatherproject
+    src: .
+    engine: nodejs16
+    primary: true
+    presets:
+      env:
+        - name: API_KEY
+          description: Weather API key
