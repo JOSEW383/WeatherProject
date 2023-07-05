@@ -5,6 +5,7 @@ micros:
     src: .
     engine: nodejs16
     primary: true
+    public: true
     presets:
       env:
         - name: API_KEY
