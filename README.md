@@ -2,7 +2,7 @@
 
 A web app that provides weather information for a city of your choice.
 
-![](https://github.com/JOSEW383/weatherproject/blob/main/public/WeatherProjectDemo.gif)
+![](https://raw.githubusercontent.com/JOSEW383/weatherproject/master/public/WeatherProjectDemo.gif)
 
 ## Features
 - Interacts with a weather API to retrieve up-to-date weather information 
